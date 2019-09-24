@@ -1,6 +1,9 @@
+@import url("https://fonts.googleapis.com/css?family=Jua|Roboto+Slab&display=swap&subset=korean");
+
 body {
 	margin: 0;
 	padding: 0;
-	font-family: sans-serif;
+	font-family: "Roboto Slab", "Jua", sans-serif;
 	background: #f9f9f9;
+	font-size: 1.3rem;
 }
