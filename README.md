@@ -103,3 +103,30 @@ const todoList = todos.map(
     );
 
 ```
+
+3. 체크 하기/체크 풀기
+
+```
+위와 마찬가지로 배열의 값을 추가할 때 새 배열을 만들어서 값을 대입으로 직접 변경해야 함.
+slice 함수로 배열을 분리해서 값을 변경할 수 있다
+https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/slice
+
+handleToggle = (id) => {
+    const { todos } = this.state;
+    const index = todos.findIndex(todo => todo.id === id);
+
+    const selected = todos[index];
+
+    this.setState({
+      todos: [
+        ...todos.slice(0, index),
+        {
+          ...selected,
+          checked: !selected.checked
+        },
+        ...todos.slice(index + 1, todos.length)
+      ]
+    });
+  }
+
+```

@@ -44,4 +44,9 @@
 	margin-left: 1rem;
 	color: #18834e;
 	font-weight: 800;
+	opacity: 0;
+}
+
+.check-mark.finished {
+	opacity: 1;
 }
