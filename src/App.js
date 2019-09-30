@@ -7,17 +7,48 @@ class App extends Component {
 	state = {
 		input: "",
 		todos: [
-			{ id: 1, text: "ㅎㅎ", checked: false },
-			{ id: 2, text: "ㅇㅇ", checked: true },
-			{ id: 3, text: "ㄴㄴ", checked: false }
+			{ id: 0, text: "ㅎㅎ", checked: false },
+			{ id: 1, text: "ㅇㅇ", checked: true },
+			{ id: 2, text: "ㄴㄴ", checked: false }
 		]
 	};
-	id = 0;
+	id = 3;
+
+	handleChange = e => {
+		//console.log(e.target);
+		this.setState({
+			input: e.target.value
+		});
+	};
+
+	handleCreate = () => {
+		const { input, todos } = this.state;
+		this.setState({
+			input: "",
+			todos: todos.concat({ id: this.id++, text: input, checked: false })
+		});
+	};
+
+	handleKeyPress = e => {
+		if (e.key === "Enter") {
+			this.handleCreate();
+		}
+	};
 
 	render() {
-		const { todos } = this.state;
+		const { todos, input } = this.state;
+		const { handleChange, handleCreate, handleKeyPress } = this;
 		return (
-			<TodoListTemplate form={<Form />}>
+			<TodoListTemplate
+				form={
+					<Form
+						value={input}
+						onChange={handleChange}
+						onCreate={handleCreate}
+						onKeyPress={handleKeyPress}
+					/>
+				}
+			>
 				<TodoItemList todos={todos} />
 			</TodoListTemplate>
 		);

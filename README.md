@@ -67,3 +67,39 @@ https://velog.io/@velopert/react-component-styling
     면 됨
 -   view만 하는 component와 state 관리하는 component를 분리하면 편함(redux)
     https://velopert.com/3346
+
+1. Form 기능 구현
+
+```
+Form [기능]
+텍스트 내용 바뀌면 state 업데이트
+버튼이 클릭되면 새 todo 생성 후 todo list 업데이트
+input에서 enter키를 누르면 버튼 클릭과 동일한 작업 진행하기
+
+onChange={handleChange} : 텍스트 입력이 생길 때마다 호출됨.
+e.target : 이벤트의 태그를 지정할 때
+
+react state에서 배열의 원소를 추가할 때 push말고 concat을 사용하자.
+push는 기존의 배열에 원소를 추가, concat는 원소가 추가된 새 배열을 생성함.
+concat로 써야 나중에 최적화 할 때 좋음
+https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/concat
+https://jaeyeophan.github.io/2018/01/02/React-tips-for-beginners/
+https://reactjs.org/docs/react-component.html#setstate
+```
+
+2. TodoItemList 기능 구현
+
+```
+객체의 값을 모두 props로 전달하기
+const todoList = todos.map(
+      (todo) => (
+        <TodoItem
+          {...todo}
+          onToggle={onToggle}
+          onRemove={onRemove}
+          key={todo.id}
+        />
+      )
+    );
+
+```
