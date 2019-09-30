@@ -56,3 +56,14 @@ https://github.com/JedWatson/classnames
 https://velog.io/@velopert/react-component-styling
 
 ```
+
+### 상태 관리
+
+-   state를 모든 component에 넣을 필요는 없음.
+-   부모를 통해 대화를 하는 것이 상태 관리하기 편할 것.
+-   Form, TodoItemList에 상태를 추가하지 않고 두 component의 부모인 App에 state
+    를 추가하자.
+-   App state에 input, todos 상태에 하위 component가 사용하는 변수를 넣어서 보내
+    면 됨
+-   view만 하는 component와 state 관리하는 component를 분리하면 편함(redux)
+    https://velopert.com/3346
