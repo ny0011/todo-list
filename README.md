@@ -160,3 +160,5 @@ ex) 최적화 안했을 때: TodoItem 배열 중 하나를 클릭하면 TodoItem
 => 한 열을 마우스 클릭했을 때 변하는 값은 checked니까 그 값이 변할 때 렌더링 되도록 설정하기
 
 ```
+
+### React에 Express 연동하기
