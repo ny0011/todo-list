@@ -14,6 +14,11 @@ class App extends Component {
 	};
 	id = 3;
 
+	callApi = async () => {
+		const response = await fetch("/api/lists");
+		const body = await response.json;
+	};
+
 	handleChange = e => {
 		//console.log(e.target);
 		this.setState({

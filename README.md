@@ -162,3 +162,23 @@ ex) 최적화 안했을 때: TodoItem 배열 중 하나를 클릭하면 TodoItem
 ```
 
 ### React에 Express 연동하기
+
+-   설치 필요한 모듈, webpack config 설정 밖으로 빼기
+
+```
+$ npm add express mysql babel-cli nodemon cross-env
+$ npm run eject
+```
+
+-   package.json에서 실행 script 수정
+
+```
+"scripts": {
+  "start": "node server/server.js",
+	"server": "nodemon server/server.js"  // 수정되면 바로 server update
+}
+
+$ npm run server
+```
+
+-   JSON data가 정상인지 확인하는 곳 : https://jsonlint.com/

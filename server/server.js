@@ -1,15 +1,16 @@
 const express = require("express");
+const bodyParser = require("body-parser");
 const path = require("path");
-const os = require("os");
+const router = require("./router");
 
 const app = express();
 const PORT = process.env.PORT || 4000;
 
-app.use(express.static(path.join(__dirname, "..", "public/")));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get("/api/getUsername", function(req, res, next) {
-	res.send({ username: os.userInfo().username });
-});
+app.use(express.static(path.join(__dirname, "..", "public/")));
+app.use("/", router);
 
 app.listen(PORT, () => {
 	console.log("check out the app at http://localhost:${PORT}");
