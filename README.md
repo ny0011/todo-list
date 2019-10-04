@@ -139,3 +139,24 @@ Array.filter 함수 사용
 
 
 ```
+
+### component 최적화
+
+https://velopert.com/3631
+
+-   shouldComponentUpdate
+
+```
+case1) 부모 component가 rendering되면 자식 component도 rendering됨
+(값을 따로 주지 않으면 항상 true로 실행됨)
+=> 부모의 특정 값이 변할 때 자식 component가 rendering되게 하고 싶을 때
+자식 component에 shouldComponentUpdate() 함수 안에 조건을 걸어주자
+
+ex) 최적화 안했을 때 : Form에 입력을 하면 TodoItemList도 함께 렌더링 됨
+=> TodoItemList는 todos 배열이 변할 때 렌더링 되도록 설정하기
+
+case2) 한 component 내에서도 변하는 것만 rendering되게 하고 싶음
+ex) 최적화 안했을 때: TodoItem 배열 중 하나를 클릭하면 TodoItem 배열 전체가 렌더링 됨.
+=> 한 열을 마우스 클릭했을 때 변하는 값은 checked니까 그 값이 변할 때 렌더링 되도록 설정하기
+
+```
