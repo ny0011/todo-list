@@ -182,3 +182,22 @@ $ npm run server
 ```
 
 -   JSON data가 정상인지 확인하는 곳 : https://jsonlint.com/
+-   App.js에서 서버의 데이터를 가져오자
+
+```
+callApi = async () => {
+		const response = await fetch("/api/lists");
+		const body = await response.json();
+		console.log(body);
+		return body;
+	};
+
+	componentDidMount() {
+		this.callApi()
+			.then(res => this.setState({ todos: res }))
+			.catch(err => console.log(err));
+	}
+
+$ npm run server
+$ npm start
+```

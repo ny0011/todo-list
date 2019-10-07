@@ -11,18 +11,18 @@ router.get("/api/lists", (req, res) => {
 	res.send([
 		{
 			id: 0,
-			image: "https://placeimg.com/64/64/1",
-			text: "ㅎㅎ"
+			text: "ㅎㅎㅎ",
+			checked: false
 		},
 		{
 			id: 1,
-			image: "https://placeimg.com/64/64/2",
-			text: "ㅇㅇ"
+			text: "ㅇㅇㅇ",
+			checked: true
 		},
 		{
 			id: 2,
-			image: "https://placeimg.com/64/64/3",
-			text: "ㄴㄴ"
+			text: "ㄴㄴㄴ",
+			checked: false
 		}
 	]);
 });

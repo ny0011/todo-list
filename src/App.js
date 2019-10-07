@@ -6,18 +6,22 @@ import TodoItemList from "./TodoItemList";
 class App extends Component {
 	state = {
 		input: "",
-		todos: [
-			{ id: 0, text: "ㅎㅎ", checked: false },
-			{ id: 1, text: "ㅇㅇ", checked: true },
-			{ id: 2, text: "ㄴㄴ", checked: false }
-		]
+		todos: []
 	};
 	id = 3;
 
 	callApi = async () => {
 		const response = await fetch("/api/lists");
-		const body = await response.json;
+		const body = await response.json();
+		console.log(body);
+		return body;
 	};
+
+	componentDidMount() {
+		this.callApi()
+			.then(res => this.setState({ todos: res }))
+			.catch(err => console.log(err));
+	}
 
 	handleChange = e => {
 		//console.log(e.target);
