@@ -8,20 +8,30 @@ export default function ToDo({ text, category, id }: IToDo) {
     const {
       currentTarget: { name },
     } = event;
+    setToDos((oldToDos) => {
+      const targetIndex = oldToDos.findIndex((toDo) => toDo.id === id);
+      const newToDo = { text, id, category: name as IToDo["category"] };
+      return [
+        ...oldToDos.slice(0, targetIndex),
+        newToDo,
+        ...oldToDos.slice(targetIndex + 1),
+      ];
+    });
   };
   return (
     <li>
       <span>{text}</span>
-      {category !== "DOING" && (
-        <button name="DOING" onClick={onClick}>
-          Doing
-        </button>
-      )}
       {category !== "TO_DO" && (
         <button name="TO_DO" onClick={onClick}>
           To Do
         </button>
       )}
+      {category !== "DOING" && (
+        <button name="DOING" onClick={onClick}>
+          Doing
+        </button>
+      )}
+
       {category !== "DONE" && (
         <button name="DONE" onClick={onClick}>
           Done

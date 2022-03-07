@@ -27,5 +27,16 @@ const [toDos, setToDos] = useRecoilState(toDoState);
 ```
 
 - button을 클릭했을 때 다른 버튼인 지 인식하는 방법
-  - 1. onClick에 argument를 넘기기. argument로 버튼 식별 가능
-  - 2. button에 name 속성을 지정하기
+
+  - case 1. onClick에 argument를 넘기기. argument로 버튼 식별 가능
+  - case 2. button에 name 속성을 지정하기
+
+- state 변경할 때 새로 값을 생성해서 setState에 설정해야 함
+  - 1. 클릭한 버튼이 있는 todo를 찾는다
+  - 2. todo의 category를 원하는 값으로 바꾼 새 todo를 만든다
+  - 3. 새로운 todos를 만들어 찾았던 todo가 있던 위치에 새 todo를 넣는다
+  - or 새 todo를 만들고 map함수를 써서 찾고 있는 id에 해당하는 위치에만 새 todo를 넣는다
+  ```
+    const newToDo = { text, id, category: name as IToDo["category"] };
+      return oldToDos.map((todo) => (todo.id === id ? newToDo : todo));
+  ```
