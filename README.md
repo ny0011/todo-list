@@ -25,3 +25,7 @@ Performant, flexible and extensible forms with easy-to-use validation.
 ```
 const [toDos, setToDos] = useRecoilState(toDoState);
 ```
+
+- button을 클릭했을 때 다른 버튼인 지 인식하는 방법
+  - 1. onClick에 argument를 넘기기. argument로 버튼 식별 가능
+  - 2. button에 name 속성을 지정하기
