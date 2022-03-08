@@ -6,9 +6,12 @@ export enum TodoCheck {
   "DONE" = "DONE",
 }
 
+export const DefaultCategory = "default";
+
 export interface IToDo {
   text: string;
   id: number;
+  category: string;
   check: TodoCheck;
 }
 
@@ -26,7 +29,12 @@ export const toDoSelector = selector({
   key: "toDoSelector",
   get: ({ get }) => {
     const toDos = get(toDoState);
-    const category = get(toDoCheckState);
-    return toDos.filter((todo) => todo.check === category);
+    const toDoCheck = get(toDoCheckState);
+    return toDos.filter((todo) => todo.check === toDoCheck);
   },
+});
+
+export const categoryState = atom<string>({
+  key: "category",
+  default: DefaultCategory,
 });

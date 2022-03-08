@@ -2,7 +2,7 @@ import React from "react";
 import { TodoCheck, IToDo, toDoState } from "../atoms";
 import { useSetRecoilState } from "recoil";
 
-export default function ToDo({ text, check, id }: IToDo) {
+export default function ToDo({ text, check, id, category }: IToDo) {
   const setToDos = useSetRecoilState(toDoState);
   const onClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     const {
@@ -10,7 +10,7 @@ export default function ToDo({ text, check, id }: IToDo) {
     } = event;
     setToDos((oldToDos) => {
       const targetIndex = oldToDos.findIndex((toDo) => toDo.id === id);
-      const newToDo = { text, id, check: name as any };
+      const newToDo = { text, id, check: name as any, category };
       return [
         ...oldToDos.slice(0, targetIndex),
         newToDo,
