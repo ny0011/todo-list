@@ -32,11 +32,26 @@ const [toDos, setToDos] = useRecoilState(toDoState);
   - case 2. button에 name 속성을 지정하기
 
 - state 변경할 때 새로 값을 생성해서 setState에 설정해야 함
+
   - 1. 클릭한 버튼이 있는 todo를 찾는다
   - 2. todo의 category를 원하는 값으로 바꾼 새 todo를 만든다
   - 3. 새로운 todos를 만들어 찾았던 todo가 있던 위치에 새 todo를 넣는다
   - or 새 todo를 만들고 map함수를 써서 찾고 있는 id에 해당하는 위치에만 새 todo를 넣는다
+
   ```
     const newToDo = { text, id, category: name as IToDo["category"] };
       return oldToDos.map((todo) => (todo.id === id ? newToDo : todo));
   ```
+
+- _selectors_
+
+  - atom의 output을 변형하는 도구
+  - 기존 atom의 구조를 변경해서 원하는 모습으로 데이터를 리턴할 수 있게 조작
+
+- 1. category 별로 데이터를 분리하기
+  - categoryState 생성 : 사용자가 category를 변경하면 감지하는 state
+  - toDoSelector 생성 : 선택한 category가 있는 todo만 배열을 생성해서 리턴
+- 2. category 별로 데이터를 보여주기
+  - select 태그를 사용해 사용자가 to_do, doing, done을 선택하게 함
+  - 이 상태가 변경될 때 category state도 변경되게 category atom 추가
+  - 선택한 category만 렌더링하게 toDoSelector에서 배열 받아옴
