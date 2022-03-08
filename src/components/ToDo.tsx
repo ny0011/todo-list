@@ -1,8 +1,8 @@
 import React from "react";
-import { Categories, IToDo, toDoState } from "../atoms";
+import { TodoCheck, IToDo, toDoState } from "../atoms";
 import { useSetRecoilState } from "recoil";
 
-export default function ToDo({ text, category, id }: IToDo) {
+export default function ToDo({ text, check, id }: IToDo) {
   const setToDos = useSetRecoilState(toDoState);
   const onClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     const {
@@ -10,7 +10,7 @@ export default function ToDo({ text, category, id }: IToDo) {
     } = event;
     setToDos((oldToDos) => {
       const targetIndex = oldToDos.findIndex((toDo) => toDo.id === id);
-      const newToDo = { text, id, category: name as any };
+      const newToDo = { text, id, check: name as any };
       return [
         ...oldToDos.slice(0, targetIndex),
         newToDo,
@@ -21,19 +21,19 @@ export default function ToDo({ text, category, id }: IToDo) {
   return (
     <li>
       <span>{text}</span>
-      {category !== Categories.TO_DO && (
-        <button name={Categories.TO_DO} onClick={onClick}>
+      {check !== TodoCheck.TO_DO && (
+        <button name={TodoCheck.TO_DO} onClick={onClick}>
           To Do
         </button>
       )}
-      {category !== Categories.DOING && (
-        <button name={Categories.DOING} onClick={onClick}>
+      {check !== TodoCheck.DOING && (
+        <button name={TodoCheck.DOING} onClick={onClick}>
           Doing
         </button>
       )}
 
-      {category !== Categories.DONE && (
-        <button name={Categories.DONE} onClick={onClick}>
+      {check !== TodoCheck.DONE && (
+        <button name={TodoCheck.DONE} onClick={onClick}>
           Done
         </button>
       )}
