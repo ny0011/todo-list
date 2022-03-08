@@ -1,5 +1,24 @@
 import { atom, selector } from "recoil";
 
+const SaveToDos = (key: string, todos: IToDo[]) => {
+  localStorage.setItem(key, JSON.stringify(todos));
+};
+
+const LoadToDos = (key: string) => {
+  return JSON.parse(
+    localStorage.hasOwnProperty(key) ? (localStorage.getItem(key) as any) : "[]"
+  );
+};
+
+const toDoEffects =
+  (key: string) =>
+  ({ setSelf, onSet }: any) => {
+    setSelf(LoadToDos(key));
+    onSet((newValue: IToDo[]) => {
+      SaveToDos(key, newValue);
+    });
+  };
+
 export enum TodoCheck {
   "TO_DO" = "TO_DO",
   "DOING" = "DOING",
@@ -23,6 +42,7 @@ export const toDoCheckState = atom<TodoCheck>({
 export const toDoState = atom<IToDo[]>({
   key: "toDo",
   default: [],
+  effects_UNSTABLE: [toDoEffects("toDo")],
 });
 
 export const toDoSelector = selector({

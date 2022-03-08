@@ -1,5 +1,5 @@
 import React from "react";
-import { TodoCheck, IToDo, toDoState } from "../atoms";
+import { TodoCheck, IToDo, toDoState, DefaultCategory } from "../atoms";
 import { useSetRecoilState } from "recoil";
 
 export default function ToDo({ text, check, id, category }: IToDo) {
@@ -19,8 +19,14 @@ export default function ToDo({ text, check, id, category }: IToDo) {
     });
   };
   return (
-    <li>
-      <span>{text}</span>
+    <li
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <span style={{ fontSize: "1.5em" }}>{text}</span>
       {check !== TodoCheck.TO_DO && (
         <button name={TodoCheck.TO_DO} onClick={onClick}>
           To Do
@@ -37,6 +43,7 @@ export default function ToDo({ text, check, id, category }: IToDo) {
           Done
         </button>
       )}
+      <span>{category === DefaultCategory ? "" : `#${category}`}</span>
     </li>
   );
 }
