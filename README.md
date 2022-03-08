@@ -43,7 +43,7 @@ const [toDos, setToDos] = useRecoilState(toDoState);
       return oldToDos.map((todo) => (todo.id === id ? newToDo : todo));
   ```
 
-- _selectors_
+- `selectors`
 
   - atom의 output을 변형하는 도구
   - 기존 atom의 구조를 변경해서 원하는 모습으로 데이터를 리턴할 수 있게 조작
@@ -52,6 +52,11 @@ const [toDos, setToDos] = useRecoilState(toDoState);
   - categoryState 생성 : 사용자가 category를 변경하면 감지하는 state
   - toDoSelector 생성 : 선택한 category가 있는 todo만 배열을 생성해서 리턴
 - 2. category 별로 데이터를 보여주기
+
   - select 태그를 사용해 사용자가 to_do, doing, done을 선택하게 함
   - 이 상태가 변경될 때 category state도 변경되게 category atom 추가
   - 선택한 category만 렌더링하게 toDoSelector에서 배열 받아옴
+
+- `enum`
+  - 값을 그대로 사용하면 오타 등 실수가 생길 수 있으니 방지하기 위한 타입
+  - 값을 따로 지정하지 않으면 차례대로 0, 1, 2 등 숫자가 할당됨
