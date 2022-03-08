@@ -50,6 +50,7 @@ table {
   border-spacing: 0;
 }
 * {
+  font-family: 'Titillium Web';
   box-sizing: border-box;
 }
 body {
@@ -63,6 +64,27 @@ a {
   text-decoration:none;
   color:inherit;
 }
+
+h1{
+  font-size: 2em;
+}
+input{
+  width: 100px;
+  margin-left : 10px;
+  border-radius: 10% / 30% ;
+  border:none ;
+}
+
+button{  
+  border: none;
+  border-radius: 10% / 20% ;
+  margin: 5px;
+  font-size: 15px;
+  color: ${(props) => props.theme.textColor};
+  background-color: ${(props) => props.theme.cardBgColor};
+}
+
+
 `;
 
 function App() {

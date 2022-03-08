@@ -10,7 +10,10 @@ interface IForm {
 
 const Container = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 2.5px 0px;
 `;
 
 export default function CreateToDo() {
@@ -32,22 +35,42 @@ export default function CreateToDo() {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit(handleValid)}>
-        <Container>
-          <label htmlFor="toDo">Write a To Do</label>
-          <input
-            id="toDo"
-            {...register("toDo", {
-              required: "Please write a To Do",
-            })}
-          />
-        </Container>
-        <Container>
-          <label htmlFor="category">Write a category</label>
-          <input id="category" {...register("category")} />
-        </Container>
-
+    <div
+      style={{
+        margin: "20px 0 10px 0",
+        display: "flex",
+        justifyContent: "center",
+      }}
+    >
+      <form
+        onSubmit={handleSubmit(handleValid)}
+        style={{
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "flex-end",
+          }}
+        >
+          <Container>
+            <label htmlFor="toDo">Write a To Do</label>
+            <input
+              id="toDo"
+              {...register("toDo", {
+                required: "Please write a To Do",
+              })}
+            />
+          </Container>
+          <Container>
+            <label htmlFor="category">Write a category</label>
+            <input id="category" {...register("category")} />
+          </Container>
+        </div>
         <button>Add</button>
       </form>
     </div>

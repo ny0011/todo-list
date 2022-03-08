@@ -6,14 +6,21 @@ import ToDo from "./ToDo";
 
 function ToDoList() {
   const toDos = useRecoilValue(toDoSelector);
-  console.log(toDos);
   return (
-    <div>
+    <div
+      style={{
+        textAlign: "center",
+        width: "410px",
+        margin: "auto",
+        height: "900px",
+        padding: "20px",
+      }}
+    >
       <h1>To Dos</h1>
       <hr />
       <CreateToDo />
       <SelectToDo />
-      <ul>
+      <ul style={{ marginTop: "7px" }}>
         {toDos?.map((toDo) => (
           <ToDo key={toDo.id} {...toDo} />
         ))}
