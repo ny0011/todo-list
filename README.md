@@ -47,11 +47,13 @@ const [toDos, setToDos] = useRecoilState(toDoState);
 
   - atom의 output을 변형하는 도구
   - 기존 atom의 구조를 변경해서 원하는 모습으로 데이터를 리턴할 수 있게 조작
+  - get 함수 : atom의 값을 변형해서 값을 리턴
+  - set 함수 : atom의 값을 바꾸고 싶을 때 파라미터로 온 값을 변형해서 atom의 값을 변경
 
-- 1. category 별로 데이터를 분리하기
+- (1) category 별로 데이터를 분리하기
   - categoryState 생성 : 사용자가 category를 변경하면 감지하는 state
   - toDoSelector 생성 : 선택한 category가 있는 todo만 배열을 생성해서 리턴
-- 2. category 별로 데이터를 보여주기
+- (2) category 별로 데이터를 보여주기
 
   - select 태그를 사용해 사용자가 to_do, doing, done을 선택하게 함
   - 이 상태가 변경될 때 category state도 변경되게 category atom 추가
