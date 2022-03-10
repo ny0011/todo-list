@@ -62,3 +62,15 @@ const [toDos, setToDos] = useRecoilState(toDoState);
 - `enum`
   - 값을 그대로 사용하면 오타 등 실수가 생길 수 있으니 방지하기 위한 타입
   - 값을 따로 지정하지 않으면 차례대로 0, 1, 2 등 숫자가 할당됨
+
+## React Beautiful DnD
+
+- https://github.com/atlassian/react-beautiful-dnd
+- 드래그 앤 드롭을 react로 예쁘게 보여주는 라이브러리
+
+1. setup
+
+- \<DragDropContext>, \<Droppable>, \<Draggable>을 만들기
+- DragDropContext : DnD를 할 수 있는 영역
+- Droppable : 드롭할 수 있는 영역
+- Draggable : 드래그를 할 수 있는 영역
