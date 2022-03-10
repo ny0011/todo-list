@@ -74,3 +74,14 @@ const [toDos, setToDos] = useRecoilState(toDoState);
 - DragDropContext : DnD를 할 수 있는 영역
 - Droppable : 드롭할 수 있는 영역
 - Draggable : 드래그를 할 수 있는 영역
+
+2. 각 태그의 props를 채워서 사용하기
+
+- 아래의 props를 사용해 children 태그의 프로퍼티를 채우면 움직인다!
+- Droppable
+  - ref={props.innerRef}
+  - {...props.droppableProps}
+- Draggable
+  - ref={props.innerRef}
+  - {...props.draggableProps}
+  - {...props.dragHandleProps}
