@@ -81,6 +81,7 @@ const [toDos, setToDos] = useRecoilState(toDoState);
 - Droppable
   - ref={props.innerRef}
   - {...props.droppableProps}
+  - props.placeholder를 board 끝에 두면 Draggable 태그가 움직일 때 Droppable 영역이 변하지 않는다
 - Draggable
   - ref={props.innerRef}
   - {...props.draggableProps}
