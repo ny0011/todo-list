@@ -101,3 +101,14 @@ const [toDos, setToDos] = useRecoilState(toDoState);
     - `react memo`를 사용하자!
       - props가 변할 때만 컴포넌트를 렌더링하기
       - DraggableCard를 export할 때 React.memo(DraggableCard)로 해주면 끝
+
+## Typescript
+
+- typescript에 아래처럼 지정해둬야 default 안에 있는 key외에 다른 key가 추가될 때 오류내지 않음
+  - default 안의 key 외에 다른 string 값이 올 수 있음
+
+```
+interface IToDoState {
+  [key: string]: string[];
+}
+```
