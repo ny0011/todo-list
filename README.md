@@ -102,6 +102,10 @@ const [toDos, setToDos] = useRecoilState(toDoState);
       - props가 변할 때만 컴포넌트를 렌더링하기
       - DraggableCard를 export할 때 React.memo(DraggableCard)로 해주면 끝
 
+4. board를 3개 만들고 board 간 dnd도 되게 해보자
+   1. board를 3개 만들기
+      - atom의 데이터 구조도 변경하기
+
 ## Typescript
 
 - typescript에 아래처럼 지정해둬야 default 안에 있는 key외에 다른 key가 추가될 때 오류내지 않음
