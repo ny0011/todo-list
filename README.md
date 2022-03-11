@@ -94,3 +94,10 @@ const [toDos, setToDos] = useRecoilState(toDoState);
   - (2) drop할 곳에 item을 추가
 - 수정은 되었지만 card 전부 rendering되어 default -> 변경된 state로 다시 보여줌
   - 매끄럽지 않은 변경
+  - console.log로 DraggableCard의 렌더링을 찍어보면 엄청 많음
+    - React는 부모의 state가 변경되면 자식의 state도 변경하기 때문
+    - 그렇지만 지금의 경우는 자식의 일부만 변경되길 원함
+      - 움직이는 item만 변경하기
+    - `react memo`를 사용하자!
+      - props가 변할 때만 컴포넌트를 렌더링하기
+      - DraggableCard를 export할 때 React.memo(DraggableCard)로 해주면 끝
