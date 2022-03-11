@@ -79,15 +79,19 @@ const [toDos, setToDos] = useRecoilState(toDoState);
 
 - 아래의 props를 사용해 children 태그의 프로퍼티를 채우면 움직인다!
 - Droppable
-  - ref={props.innerRef}
-  - {...props.droppableProps}
-  - props.placeholder를 board 끝에 두면 Draggable 태그가 움직일 때 Droppable 영역이 변하지 않는다
+  - 첫번째 props(DroppableProvided)에 있는 내용
+    - ref={props.innerRef}
+    - {...props.droppableProps}
+    - props.placeholder를 board 끝에 두면 Draggable 태그가 움직일 때 Droppable 영역이 변하지 않는다
+  - 두번째 props(DroppableStateSnapshot)에 있는 내용
+    - isDraggingOver : droppable 내부에 드래그 되었는가?
+    - draggingFromThisWith : 이 droppable에서 draggable이 나갔음을 알려줌. droppable 밖으로 나갈 때 이 값이 생김. 값은 draggableId.
 - Draggable
   - ref={props.innerRef}
   - {...props.draggableProps}
   - {...props.dragHandleProps}
 
-3. dnd를 했을 때 변경이 반영되도록 onDragEnd에서 todo state를 수정하기
+1. dnd를 했을 때 변경이 반영되도록 onDragEnd에서 todo state를 수정하기
 
 - 수정 방법
   - (1) drag한 item이 있는 곳을 삭제
@@ -120,6 +124,11 @@ const [toDos, setToDos] = useRecoilState(toDoState);
     - (2) 다른 board로 위치를 변경할 때(board 2개가 변경됨)
       - (1) source board, destination board 2개의 데이터를 가져옴
       - 나머지는 똑같음
+  - CSS 변경 필요 -> 위치를 변경할 때 맨 위로 가야 움직이는 현상과 위치가 변경될 때 배경색 바꾸고 싶음
+    - (1) 타이틀 밑의 어느 공간에 드래그해도 위치 변경 가능하게 하기
+      - CSS에서 flex-grow:1로 설정
+        - 값의 의미: flex-container 내부에서 flex-item이 할당 받은 공간의 크기
+        - https://developer.mozilla.org/ko/docs/Web/CSS/flex-grow
 
 ## Typescript
 

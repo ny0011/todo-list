@@ -58,7 +58,9 @@ function App() {
       <Wrapper>
         <Boards>
           {Object.keys(toDos).map((boardId) => {
-            return <Board toDos={toDos[boardId]} boardId={boardId} />;
+            return (
+              <Board toDos={toDos[boardId]} boardId={boardId} key={boardId} />
+            );
           })}
         </Boards>
       </Wrapper>
