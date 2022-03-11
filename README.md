@@ -103,8 +103,23 @@ const [toDos, setToDos] = useRecoilState(toDoState);
       - DraggableCard를 export할 때 React.memo(DraggableCard)로 해주면 끝
 
 4. board를 3개 만들고 board 간 dnd도 되게 해보자
-   1. board를 3개 만들기
-      - atom의 데이터 구조도 변경하기
+
+- (1) board를 3개 만들기
+  - atom의 데이터 구조도 변경하기
+- (2) board 간 dnd 해보기
+  - onDragEnd의 props인 info를 확인해보면 아래 내용을 받는 걸 알 수 있다
+    ```
+      destination: {droppableId: 'Doing', index: 2},
+      draggableId: "d"
+      source:{index: 1, droppableId: 'To Do'}
+    ```
+    - (1) 같은 board 내에서 위치를 변경할 때(board 1개만 변경됨)
+      - (0) board 1개의 데이터를 가져옴
+      - (1) source에 있는 draggableId를 지운다
+      - (2) destination의 위치로 draggableId를 추가한다
+    - (2) 다른 board로 위치를 변경할 때(board 2개가 변경됨)
+      - (1) source board, destination board 2개의 데이터를 가져옴
+      - 나머지는 똑같음
 
 ## Typescript
 

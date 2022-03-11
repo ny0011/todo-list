@@ -1,3 +1,4 @@
+import React from "react";
 import { Droppable } from "react-beautiful-dnd";
 import styled from "styled-components";
 import DraggableCard from "./DraggableCard";
@@ -40,4 +41,4 @@ function Board({ toDos, boardId }: IBoardProps) {
   );
 }
 
-export default Board;
+export default React.memo(Board);
