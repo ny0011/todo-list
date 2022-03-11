@@ -86,3 +86,11 @@ const [toDos, setToDos] = useRecoilState(toDoState);
   - ref={props.innerRef}
   - {...props.draggableProps}
   - {...props.dragHandleProps}
+
+3. dnd를 했을 때 변경이 반영되도록 onDragEnd에서 todo state를 수정하기
+
+- 수정 방법
+  - (1) drag한 item이 있는 곳을 삭제
+  - (2) drop할 곳에 item을 추가
+- 수정은 되었지만 card 전부 rendering되어 default -> 변경된 state로 다시 보여줌
+  - 매끄럽지 않은 변경
