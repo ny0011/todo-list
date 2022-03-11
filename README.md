@@ -87,9 +87,12 @@ const [toDos, setToDos] = useRecoilState(toDoState);
     - isDraggingOver : droppable 내부에 드래그 되었는가?
     - draggingFromThisWith : 이 droppable에서 draggable이 나갔음을 알려줌. droppable 밖으로 나갈 때 이 값이 생김. 값은 draggableId.
 - Draggable
-  - ref={props.innerRef}
-  - {...props.draggableProps}
-  - {...props.dragHandleProps}
+  - 첫번째 props : DraggableProvided
+    - ref={props.innerRef}
+    - {...props.draggableProps}
+    - {...props.dragHandleProps}
+  - 두번째 props : DraggableStateSnapshot
+    - isDragging : 드래깅 중인가?
 
 1. dnd를 했을 때 변경이 반영되도록 onDragEnd에서 todo state를 수정하기
 
@@ -129,6 +132,8 @@ const [toDos, setToDos] = useRecoilState(toDoState);
       - CSS에서 flex-grow:1로 설정
         - 값의 의미: flex-container 내부에서 flex-item이 할당 받은 공간의 크기
         - https://developer.mozilla.org/ko/docs/Web/CSS/flex-grow
+    - (2) 위치가 변경될 때
+      - Droppable과 Draggable의 두번째 props을 사용해서 CSS 변경
 
 ## Typescript
 
