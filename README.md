@@ -78,6 +78,9 @@ const [toDos, setToDos] = useRecoilState(toDoState);
 2. 각 태그의 props를 채워서 사용하기
 
 - 아래의 props를 사용해 children 태그의 프로퍼티를 채우면 움직인다!
+- `ref`?
+  - HTML element를 지정하고 가져올 수 있는 방법
+  - React에서는 useRef()를 사용해 HTML element를 가져올 수 있다
 - Droppable
   - 첫번째 props(DroppableProvided)에 있는 내용
     - ref={props.innerRef}
@@ -134,6 +137,11 @@ const [toDos, setToDos] = useRecoilState(toDoState);
         - https://developer.mozilla.org/ko/docs/Web/CSS/flex-grow
     - (2) 위치가 변경될 때
       - Droppable과 Draggable의 두번째 props을 사용해서 CSS 변경
+
+5. todo의 데이터에 여러 개의 데이터를 저장하기!
+
+- todo에 id, text key를 추가
+- todo의 데이터 타입이 string -> object로 변경되어 코드를 수정해야 함
 
 ## Typescript
 
