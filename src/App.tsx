@@ -3,11 +3,13 @@ import { useRecoilState } from "recoil";
 import styled from "styled-components";
 import { toDoState } from "./atoms";
 import Board from "./Components/Board";
+import Trashcan from "./Components/Trashcan";
 
 const Wrapper = styled.div`
   display: flex;
   width: 100vw;
   margin: 0 auto;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
@@ -25,8 +27,18 @@ function App() {
   const [toDos, setToDos] = useRecoilState(toDoState);
   const onDragEnd = (info: DropResult) => {
     const { destination, source } = info;
+
     if (!destination) return;
+    if (destination.droppableId === "trashcan") {
+      setToDos((allBoards) => {
+        const board = [...allBoards[source.droppableId]];
+        board.splice(source.index, 1);
+        return { ...allBoards, [source.droppableId]: board };
+      });
+      return;
+    }
     if (destination.droppableId === source.droppableId) {
+      if (destination.index === source.index) return;
       setToDos((allBoards) => {
         const board = [...allBoards[source.droppableId]];
         const card = board[source.index];
@@ -51,8 +63,6 @@ function App() {
         };
       });
     }
-
-    console.log(toDos);
   };
   return (
     <DragDropContext onDragEnd={onDragEnd}>
@@ -64,6 +74,7 @@ function App() {
             );
           })}
         </Boards>
+        <Trashcan droppableId="trashcan" />
       </Wrapper>
     </DragDropContext>
   );
